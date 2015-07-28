@@ -12,11 +12,13 @@ server.on("connection", function(client) {
 	client.write("Welcome user! \n");
 	for (i = 0; i < users.length; i++) {
 			users[i].write(client.remoteAddress + " connected! \n");
+			console.log(client.remoteAddress + " connected! \n");
 		}
 	users.push(client);
 	client.on("data", function(data) {
 		for (i = 0; i < users.length; i++) {
 			users[i].write(client.remoteAddress + ": " + data);
+			console.log(client.remoteAddress + ": " + data.toString());
 		}
 	})
 })
